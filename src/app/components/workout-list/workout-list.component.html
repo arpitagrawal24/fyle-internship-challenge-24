@@ -1,0 +1,24 @@
+<div class="mb-4">
+    <input type="text" placeholder="Search by name" [(ngModel)]="searchText" (input)="filterWorkouts()" class="mt-1 block w-full">
+    <select [(ngModel)]="filterType" (change)="filterWorkouts()" class="mt-1 block w-full">
+      <option value="">Filter by workout type</option>
+      <option *ngFor="let type of workoutTypes">{{ type }}</option>
+    </select>
+  </div>
+  <table class="min-w-full bg-white">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Workout Type</th>
+        <th>Minutes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of filteredUsers">
+        <td>{{ user.name }}</td>
+        <td *ngFor="let workout of user.workouts">{{ workout.type }}</td>
+        <td *ngFor="let workout of user.workouts">{{ workout.minutes }}</td>
+      </tr>
+    </tbody>
+  </table>
+  

@@ -7,15 +7,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { WorkoutFormComponent } from './components/workout-form/workout-form.component';
 import { WorkoutListComponent } from './components/workout-list/workout-list.component';
-import { WorkoutChartComponent } from './components/workout-chart/workout-chart.component';
-
 @NgModule({
-  declarations: [
-    AppComponent,
-    WorkoutFormComponent,
-    WorkoutListComponent,
-    WorkoutChartComponent,
-  ],
+  declarations: [AppComponent, WorkoutFormComponent, WorkoutListComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],

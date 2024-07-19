@@ -1,16 +1,48 @@
-<form (ngSubmit)="onSubmit()">
+<div class="container mx-auto p-4">
+  <h1 class="text-2xl font-bold mb-4">Add a Workout</h1>
+  <p class="text-gray-700 mb-4">Add a workout to your list of workouts.</p>
+  <form (ngSubmit)="onSubmit()">
     <div class="mb-4">
-      <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
-      <input type="text" id="name" [(ngModel)]="name" name="name" class="mt-1 block w-full" required>
+      <label for="name" class="block text-sm font-medium text-gray-700"
+        >Name</label
+      >
+      <input
+        type="text"
+        id="name"
+        [(ngModel)]="name"
+        name="name"
+        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm"
+        required
+      />
     </div>
     <div class="mb-4">
-      <label for="type" class="block text-sm font-medium text-gray-700">Workout Type</label>
-      <input type="text" id="type" [(ngModel)]="workoutType" name="type" class="mt-1 block w-full" required>
+      <label for="type" class="block text-sm font-medium text-gray-700"
+        >Workout Type</label
+      >
+      <input
+        type="text"
+        id="type"
+        [(ngModel)]="workoutType"
+        name="type"
+        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm"
+        required
+      />
     </div>
     <div class="mb-4">
-      <label for="minutes" class="block text-sm font-medium text-gray-700">Minutes</label>
-      <input type="number" id="minutes" [(ngModel)]="workoutMinutes" name="minutes" class="mt-1 block w-full" required>
+      <label for="minutes" class="block text-sm font-medium text-gray-700"
+        >Minutes</label
+      >
+      <input
+        type="number"
+        id="minutes"
+        [(ngModel)]="workoutMinutes"
+        name="minutes"
+        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm"
+        required
+      />
     </div>
-    <button type="submit" class="bg-blue-500 text-white px-4 py-2">Add Workout</button>
+    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md">
+      Add Workout
+    </button>
   </form>
-  
+</div>

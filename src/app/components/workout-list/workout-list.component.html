@@ -1,24 +1,51 @@
-<div class="mb-4">
-    <input type="text" placeholder="Search by name" [(ngModel)]="searchText" (input)="filterWorkouts()" class="mt-1 block w-full">
-    <select [(ngModel)]="filterType" (change)="filterWorkouts()" class="mt-1 block w-full">
-      <option value="">Filter by workout type</option>
+<div class="container mx-auto p-4">
+  <div class="flex justify-between mb-4">
+    <input
+      type="text"
+      placeholder="Search"
+      [(ngModel)]="searchText"
+      (input)="filterUsers()"
+      class="mt-1 block w-1/2 border-gray-300 rounded-md shadow-sm"
+    />
+    <select
+      [(ngModel)]="filterType"
+      (change)="filterUsers()"
+      class="mt-1 block w-1/4 border-gray-300 rounded-md shadow-sm"
+    >
+      <option value="">Filter by Workout Type</option>
       <option *ngFor="let type of workoutTypes">{{ type }}</option>
     </select>
   </div>
-  <table class="min-w-full bg-white">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Workout Type</th>
-        <th>Minutes</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let user of filteredUsers">
-        <td>{{ user.name }}</td>
-        <td *ngFor="let workout of user.workouts">{{ workout.type }}</td>
-        <td *ngFor="let workout of user.workouts">{{ workout.minutes }}</td>
-      </tr>
-    </tbody>
-  </table>
-  
+
+  <div class="bg-white border border-gray-300 rounded-md shadow-sm">
+    <div class="grid grid-cols-4 bg-gray-100 p-4 font-semibold text-gray-700">
+      <div>Name</div>
+      <div>Workouts</div>
+      <div>Number of Workouts</div>
+      <div>Total Workout Minutes</div>
+    </div>
+
+    <div *ngFor="let user of filteredUsers" class="border-t divide-y divide-gray-200">
+      <div class="grid grid-cols-4 p-4 hover:bg-gray-50">
+        <div class="border-r px-4 py-2">{{ user.name }}</div>
+        <div class="border-r px-4 py-2">{{ user.workoutTypes }}</div>
+        <div class="border-r px-4 py-2">{{ user.workoutCount }}</div>
+        <div class="px-4 py-2">{{ user.totalMinutes }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex justify-between items-center mt-4">
+    <div>
+      <button class="px-3 py-1 border rounded-l-md border-gray-300 bg-gray-100 hover:bg-gray-200" (click)="prevPage()" [disabled]="currentPage === 1">« Previous</button>
+      <span class="px-3 py-1 border-t border-b border-gray-300">{{ currentPage }}</span>
+      <button class="px-3 py-1 border rounded-r-md border-gray-300 bg-gray-100 hover:bg-gray-200" (click)="nextPage()" [disabled]="currentPage === totalPages">Next »</button>
+    </div>
+    <div>
+      <label for="itemsPerPage" class="mr-2">Items per page:</label>
+      <select id="itemsPerPage" [(ngModel)]="itemsPerPage" (change)="updateItemsPerPage()" class="border-gray-300 rounded-md shadow-sm">
+        <option *ngFor="let count of [5, 10, 15, 20]" [value]="count">{{ count }}</option>
+      </select>
+    </div>
+  </div>
+</div>
